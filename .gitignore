@@ -1,0 +1,13 @@
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+
+*.test
+
+.idea/
+*.iml
+
+*.jpg
+*.jpeg
