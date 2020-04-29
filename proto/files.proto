@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option go_package = "files_proto";
+package files_proto;
+
+
+service FilesSvc {
+    rpc Upload(stream File) returns (FilesUploadResp);
+    rpc GetList(FilesGetListReq) returns (stream FileInfo);
+}
+
+message File {
+
+    oneof FilePart {
+        FileHeader FileHeader = 1;
+        FileChunk FileChunk = 2;
+    }
+}
+
+message FileHeader {
+    string Name = 1;
+    int64 Size = 2;
+}
+
+message FileChunk {
+    bytes Data = 1;
+}
+
+message FilesUploadResp {}
+
+message FilesGetListReq {}
+
+message FileInfo {
+    string Name = 1;
+    string DateOfCreation = 2;
+    string DateOfModification  = 3;
+}
